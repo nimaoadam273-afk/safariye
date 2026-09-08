@@ -1,0 +1,1586 @@
+<!DOCTYPE html>
+<html lang="so">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Safariye Travel & Tours | Socdaal & Dalxiis</title>
+
+    <style>
+        :root {
+            --primary: #0056b3;
+            --primary-dark: #003d80;
+            --secondary: #ffc107;
+            --dark: #17202a;
+            --light: #f5f7fa;
+            --white: #ffffff;
+            --gray: #6c757d;
+            --border: #e0e0e0;
+            --success: #198754;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+            background: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+
+        img {
+            display: block;
+            width: 100%;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        button,
+        input,
+        select,
+        textarea {
+            font: inherit;
+        }
+
+        /* =========================
+           NAVBAR
+        ========================= */
+
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.97);
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
+            z-index: 1000;
+        }
+
+        .nav-container {
+            width: min(1200px, 92%);
+            margin: auto;
+            min-height: 75px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            font-size: 25px;
+            font-weight: 800;
+            color: var(--primary);
+        }
+
+        .logo span {
+            color: var(--secondary);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            align-items: center;
+            gap: 25px;
+        }
+
+        nav a {
+            color: var(--dark);
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--primary);
+        }
+
+        .menu-btn {
+            display: none;
+            border: none;
+            background: none;
+            font-size: 30px;
+            cursor: pointer;
+        }
+
+        /* =========================
+           HERO
+        ========================= */
+
+        .hero {
+            min-height: 100vh;
+
+            background:
+                linear-gradient(
+                    rgba(0, 0, 0, 0.55),
+                    rgba(0, 0, 0, 0.55)
+                ),
+                url("images/hero.jpg") center/cover no-repeat;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            text-align: center;
+            color: white;
+
+            padding: 120px 20px 80px;
+        }
+
+        .hero-content {
+            max-width: 800px;
+        }
+
+        .hero h1 {
+            font-size: clamp(38px, 6vw, 65px);
+            line-height: 1.15;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 19px;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+
+        .btn {
+            display: inline-block;
+            border: none;
+            background: var(--secondary);
+            color: #111;
+            padding: 13px 28px;
+            border-radius: 7px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            background: white;
+            color: var(--primary);
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-dark);
+            color: white;
+        }
+
+        /* =========================
+           BOOKING
+        ========================= */
+
+        .booking-container {
+            width: min(1100px, 92%);
+            margin: -55px auto 70px;
+
+            position: relative;
+            z-index: 20;
+
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+
+            box-shadow: 0 10px 35px rgba(0, 0, 0, 0.12);
+        }
+
+        .booking-title {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .booking-title h2 {
+            color: var(--primary);
+            margin-bottom: 5px;
+        }
+
+        .booking-form {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 18px;
+            align-items: end;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 7px;
+        }
+
+        .form-group label {
+            font-weight: 700;
+            font-size: 14px;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid var(--border);
+            border-radius: 7px;
+            outline: none;
+            background: white;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            border-color: var(--primary);
+        }
+
+        /* =========================
+           GENERAL SECTIONS
+        ========================= */
+
+        section {
+            scroll-margin-top: 90px;
+        }
+
+        .section {
+            width: min(1200px, 92%);
+            margin: 0 auto 80px;
+        }
+
+        .section-heading {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .section-heading h2 {
+            color: var(--primary);
+            font-size: 34px;
+            margin-bottom: 8px;
+        }
+
+        .section-heading p {
+            color: var(--gray);
+        }
+
+        /* =========================
+           PACKAGES
+        ========================= */
+
+        .packages-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 14px;
+            overflow: visible;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-7px);
+        }
+
+        .card-image {
+            height: 220px;
+            overflow: visible;
+        }
+
+        .card-image img {
+            height: 100%;
+            object-fit: cover;
+            transition: 0.4s;
+        }
+
+        .card:hover .card-image img {
+            transform: scale(1.05);
+        }
+
+        .card-content {
+            padding: 22px;
+        }
+
+        .card-content h3 {
+            font-size: 22px;
+            margin-bottom: 10px;
+        }
+
+        .card-content p {
+            color: var(--gray);
+            margin-bottom: 15px;
+        }
+
+        .price {
+            color: var(--primary);
+            font-size: 23px;
+            font-weight: 800;
+            margin-bottom: 18px;
+        }
+
+        /* =========================
+           DESTINATIONS
+        ========================= */
+
+        .destinations-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 22px;
+        }
+
+        .destination {
+            position: relative;
+            height: 250px;
+            border-radius: 13px;
+            overflow: hidden;
+        }
+
+        .destination img {
+            height: 100%;
+            object-fit: cover;
+            transition: 0.4s;
+        }
+
+        .destination:hover img {
+            transform: scale(1.08);
+        }
+
+        .destination-overlay {
+            position: absolute;
+            inset: 0;
+
+            display: flex;
+            align-items: flex-end;
+
+            padding: 22px;
+
+            background: linear-gradient(
+                transparent,
+                rgba(0, 0, 0, 0.75)
+            );
+
+            color: white;
+        }
+
+        .destination-overlay h3 {
+            font-size: 25px;
+        }
+
+        /* =========================
+           SERVICES
+        ========================= */
+
+        .services {
+            background: #eaf1f8;
+            padding: 80px 0;
+        }
+
+        .services-grid {
+            width: min(1200px, 92%);
+            margin: auto;
+
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .service-card {
+            background: white;
+            padding: 30px;
+            border-radius: 13px;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.06);
+        }
+
+        .service-icon {
+            font-size: 45px;
+            margin-bottom: 15px;
+        }
+
+        .service-card h3 {
+            margin-bottom: 10px;
+            color: var(--primary);
+        }
+
+        .service-card p {
+            color: var(--gray);
+        }
+
+        /* =========================
+           FLEET
+        ========================= */
+
+        .fleet-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .fleet-card {
+            background: white;
+            border-radius: 13px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .fleet-card img {
+            height: 220px;
+            object-fit: cover;
+        }
+
+        .fleet-info {
+            padding: 20px;
+        }
+
+        /* =========================
+           CONTACT
+        ========================= */
+
+        .contact-section {
+            background: white;
+            padding: 70px 0;
+        }
+
+        .contact-grid {
+            width: min(1000px, 92%);
+            margin: auto;
+
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+
+        .contact-info h2 {
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+
+        .contact-info p {
+            margin-bottom: 12px;
+            color: var(--gray);
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 130px;
+        }
+
+        /* =========================
+           MODAL
+        ========================= */
+
+        .modal {
+            display: none;
+
+            position: fixed;
+            inset: 0;
+
+            background: rgba(0, 0, 0, 0.65);
+
+            align-items: center;
+            justify-content: center;
+
+            padding: 20px;
+
+            z-index: 2000;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: white;
+            width: min(550px, 100%);
+            padding: 30px;
+            border-radius: 15px;
+            position: relative;
+        }
+
+        .close-modal {
+            position: absolute;
+            right: 20px;
+            top: 15px;
+
+            border: none;
+            background: none;
+
+            font-size: 28px;
+            cursor: pointer;
+        }
+
+        .booking-summary {
+            margin: 20px 0;
+            background: var(--light);
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .booking-summary p {
+            margin: 8px 0;
+        }
+
+        .success-message {
+            color: var(--success);
+            font-weight: bold;
+            margin-top: 15px;
+        }
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+            background: var(--dark);
+            color: white;
+            text-align: center;
+            padding: 35px 20px;
+        }
+
+        footer p {
+            margin: 5px;
+        }
+
+        /* =========================
+           RESPONSIVE
+        ========================= */
+
+        @media (max-width: 900px) {
+
+            .booking-form {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .packages-grid,
+            .destinations-grid,
+            .services-grid,
+            .fleet-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 650px) {
+
+            .nav-container {
+                min-height: 65px;
+            }
+
+            .menu-btn {
+                display: block;
+            }
+
+            nav {
+                display: none;
+                position: absolute;
+                top: 65px;
+                left: 0;
+                width: 100%;
+                background: white;
+                box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            }
+
+            nav.active {
+                display: block;
+            }
+
+            nav ul {
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 20px;
+                gap: 18px;
+            }
+
+            .hero {
+                min-height: 90vh;
+            }
+
+            .hero h1 {
+                font-size: 40px;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+
+            .booking-container {
+                margin-top: -30px;
+                padding: 20px;
+            }
+
+            .booking-form {
+                grid-template-columns: 1fr;
+            }
+
+            .packages-grid,
+            .destinations-grid,
+            .services-grid,
+            .fleet-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .section-heading h2 {
+                font-size: 28px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- =========================
+         NAVIGATION
+    ========================== -->
+
+    <header>
+        <div class="nav-container">
+
+            <a href="#" class="logo">
+                ✈️ Safariye<span>Tours</span>
+            </a>
+
+            <button class="menu-btn" id="menuBtn">
+                ☰
+            </button>
+
+            <nav id="nav">
+                <ul>
+                    <li><a href="#home">Hoyga</a></li>
+                    <li><a href="#packages">Xirmooyin</a></li>
+                    <li><a href="#destinations">Goobo</a></li>
+                    <li><a href="#services">Adeegyo</a></li>
+                    <li><a href="#fleet">Gawaari</a></li>
+                    <li><a href="#contact">Nala Soo Xiriir</a></li>
+                </ul>
+            </nav>
+
+        </div>
+    </header>
+
+
+    <!-- =========================
+         HERO
+    ========================== -->
+
+    <section class="hero" id="home">
+
+        <div class="hero-content">
+
+            <h1>U Diyaar Garow Safarkaaga Xiga</h1>
+
+            <p>
+                Waxaan kuu diyaarinay tigidho, hoteelo,
+                gawaari iyo xirmooyin dalxiis oo kuu fududeynaya
+                safarka dalka iyo dibaddaba.
+            </p>
+
+            <a href="#booking" class="btn">
+                Qorshee Safarkaaga
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         BOOKING
+    ========================== -->
+
+    <section id="booking">
+
+        <div class="booking-container">
+
+            <div class="booking-title">
+                <h2>Book Your Trip</h2>
+                <p>Buuxi xogta hoose si aad u dalbato adeegga.</p>
+            </div>
+
+            <form class="booking-form" id="bookingForm">
+
+                <div class="form-group">
+
+                    <label for="destination">
+                        Halka Aad U Socoto
+                    </label>
+
+                    <select id="destination" required>
+
+                        <option value="">
+                            Dooro magaalada...
+                        </option>
+
+                        <option value="Hargeisa">
+                            Hargeisa
+                        </option>
+
+                        <option value="Mogadishu">
+                            Mogadishu
+                        </option>
+
+                        <option value="Garowe">
+                            Garowe
+                        </option>
+
+                        <option value="Dubai">
+                            Dubai
+                        </option>
+
+                        <option value="Istanbul">
+                            Istanbul
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="date">
+                        Taariikhda Safarka
+                    </label>
+
+                    <input
+                        type="date"
+                        id="date"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="service">
+                        Nooca Adeegga
+                    </label>
+
+                    <select id="service" required>
+
+                        <option value="">
+                            Dooro adeeg...
+                        </option>
+
+                        <option value="Duullimaad">
+                            ✈️ Duullimaad
+                        </option>
+
+                        <option value="Car Rental">
+                            🚗 Gawaari Kirayn
+                        </option>
+
+                        <option value="Hotel">
+                            🏨 Hotel
+                        </option>
+
+                        <option value="Tour Package">
+                            🌍 Xirmo Dalxiis
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <button
+                    type="submit"
+                    class="btn btn-primary"
+                >
+                    Dalbo Hadda
+                </button>
+
+            </form>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         PACKAGES
+    ========================== -->
+
+    <section class="section" id="packages">
+
+        <div class="section-heading">
+
+            <h2>Xirmooyinka Dalxiiska</h2>
+
+            <p>
+                Dooro xirmada kugu habboon.
+            </p>
+
+        </div>
+
+
+        <div class="packages-grid">
+
+            <!-- Dubai -->
+
+            <article class="card">
+
+                <div class="card-image">
+
+                    <img
+                        src="images/dubai.jpg"
+                        
+                    >
+
+                </div>
+
+                <div class="card-content">
+
+                    <h3>Dalxiiska Dubai</h3>
+
+                    <p>
+                        Ku raaxayso safar 5 maalmood ah
+                        oo aad ku booqanayso meelaha caanka ah
+                        ee Dubai.
+                    </p>
+
+                    <div class="price">
+                        $450
+                    </div>
+
+                    <button
+                        class="btn btn-primary package-btn"
+                        data-destination="Dubai"
+                    >
+                        Boos Qabso
+                    </button>
+
+                </div>
+
+            </article>
+
+
+            <!-- Istanbul -->
+
+            <article class="card">
+
+                <div class="card-image">
+
+                    <img src="images/istanbul.jpg">
+
+                </div>
+
+                <div class="card-content">
+
+                    <h3>Socdaalka Istanbul</h3>
+
+                    <p>
+                        Booqo goobaha taariikhiga ah
+                        iyo quruxda magaalada Istanbul.
+                    </p>
+
+                    <div class="price">
+                        $550
+                    </div>
+
+                    <button
+                        class="btn btn-primary package-btn"
+                        data-destination="Istanbul"
+                    >
+                        Boos Qabso
+                    </button>
+
+                </div>
+
+            </article>
+
+
+            <!-- Car -->
+
+            <article class="card">
+
+                <div class="card-image">
+
+                    <img
+                        src="images/car.jpg"
+                        alt="Gawaari raaxo leh"
+                    >
+
+                </div>
+
+                <div class="card-content">
+
+                    <h3>Gawaari Raaxo Leh</h3>
+
+                    <p>
+                        Hel gaari ku habboon safarkaaga
+                        ama kirayso maalin kasta.
+                    </p>
+
+                    <div class="price">
+                        $50 / Maalintii
+                    </div>
+
+                    <button
+                        class="btn btn-primary package-btn"
+                        data-service="Car Rental"
+                    >
+                        Boos Qabso
+                    </button>
+
+                </div>
+
+            </article>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         DESTINATIONS
+    ========================== -->
+
+    <section class="section" id="destinations">
+
+        <div class="section-heading">
+
+            <h2>Goobaha Aan U Safarno</h2>
+
+            <p>
+                Ka dooro destination-ka aad rabto.
+            </p>
+
+        </div>
+
+
+        <div class="destinations-grid">
+
+            <div class="destination">
+
+                <img
+                    src="images/hargeysa.jpg"
+                    alt="Hargeisa"
+                >
+
+                <div class="destination-overlay">
+                    <h3>Hargeisa</h3>
+                </div>
+
+            </div>
+
+
+            <div class="destination">
+
+                <img
+                    src="images/mogadishu.jpg"
+                    alt="Mogadishu"
+                >
+
+                <div class="destination-overlay">
+                    <h3>Mogadishu</h3>
+                </div>
+
+            </div>
+
+
+            <div class="destination">
+
+                <img
+                    src="images/Garowe.jpg"
+                    alt="Garowe"
+                >
+
+                <div class="destination-overlay">
+                    <h3>Garowe</h3>
+                </div>
+
+            </div>
+
+
+            <div class="destination">
+
+                <img
+                    src="images/dubai.jpg"
+                    alt="Dubai"
+                >
+
+                <div class="destination-overlay">
+                    <h3>Dubai</h3>
+                </div>
+
+            </div>
+
+
+            <div class="destination">
+
+                <img
+                    src="images/istanbul.jpg"
+                    alt="Istanbul"
+                >
+
+                <div class="destination-overlay">
+                    <h3>Istanbul</h3>
+                </div>
+
+            </div>
+
+
+            <div class="destination">
+
+                <img
+                    src="images/flight.jpg"
+                    alt="International Flight"
+                >
+
+                <div class="destination-overlay">
+                    <h3>International Travel</h3>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         SERVICES
+    ========================== -->
+
+    <section class="services" id="services">
+
+        <div class="section-heading">
+
+            <h2>Adeegyadeena</h2>
+
+            <p>
+                Wax kasta oo safarkaaga muhiim u ah.
+            </p>
+
+        </div>
+
+
+        <div class="services-grid">
+
+            <div class="service-card">
+
+                <div class="service-icon">
+                    ✈️
+                </div>
+
+                <h3>Flight Booking</h3>
+
+                <p>
+                    Waxaan kaa caawinaynaa helitaanka
+                    duullimaadyada kugu habboon.
+                </p>
+
+            </div>
+
+
+            <div class="service-card">
+
+                <div class="service-icon">
+                    🏨
+                </div>
+
+                <h3>Hotel Booking</h3>
+
+                <p>
+                    Waxaan kuu raadinaynaa hoteelo
+                    ku habboon safarkaaga.
+                </p>
+
+            </div>
+
+
+            <div class="service-card">
+
+                <div class="service-icon">
+                    🚗
+                </div>
+
+                <h3>Car Rental</h3>
+
+                <p>
+                    Kirayso gawaari ku habboon
+                    safarkaaga.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         FLEET
+    ========================== -->
+
+    <section class="section" id="fleet">
+
+        <div class="section-heading">
+
+            <h2>Gawaarideena</h2>
+
+            <p>
+                Gawaari kala duwan oo diyaar u ah kirayn.
+            </p>
+
+        </div>
+
+
+        <div class="fleet-grid">
+
+            <div class="fleet-card">
+
+                <img
+                    src="images/car.jpg"
+                    alt="Luxury Cars"
+                >
+
+                <div class="fleet-info">
+
+                    <h3>Luxury Cars</h3>
+
+                    <p>
+                        Gawaari raaxo leh oo ku habboon
+                        safarada gaarka ah.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="fleet-card">
+
+                <img
+                    src="images/car.jpg"
+                    alt="Travel Car"
+                >
+
+                <div class="fleet-info">
+
+                    <h3>Travel Cars</h3>
+
+                    <p>
+                        Gawaari ku habboon safarada
+                        gudaha magaalada.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="fleet-card">
+
+                <img
+                    src="images/car.jpg"
+                    alt="Family Car"
+                >
+
+                <div class="fleet-info">
+
+                    <h3>Family Cars</h3>
+
+                    <p>
+                        Gawaari waasac ah oo ku habboon
+                        qoysaska iyo kooxaha.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         CONTACT
+    ========================== -->
+
+    <section class="contact-section" id="contact">
+
+        <div class="contact-grid">
+
+            <div class="contact-info">
+
+                <h2>Nala Soo Xiriir</h2>
+
+                <p>
+                    Ma haysaa su'aal ama waxaad rabtaa
+                    inaad safar dalbato?
+                </p>
+
+                <p>
+                    📞 Telefoon: +252 63 XXXXXXX
+                </p>
+
+                <p>
+                    📧 Email: info@safariye.com
+                </p>
+
+                <p>
+                    📍 Somaliland
+                </p>
+
+            </div>
+
+
+            <form class="contact-form" id="contactForm">
+
+                <div class="form-group">
+
+                    <label for="name">
+                        Magacaaga
+                    </label>
+
+                    <input
+                        type="text"
+                        id="name"
+                        placeholder="Geli magacaaga"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="email">
+                        Email
+                    </label>
+
+                    <input
+                        type="email"
+                        id="email"
+                        placeholder="Geli email-kaaga"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="message">
+                        Fariinta
+                    </label>
+
+                    <textarea
+                        id="message"
+                        placeholder="Sideen kuu caawin karnaa?"
+                        required
+                    ></textarea>
+
+                </div>
+
+
+                <button
+                    type="submit"
+                    class="btn btn-primary"
+                >
+                    Dir Fariinta
+                </button>
+
+            </form>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         BOOKING MODAL
+    ========================== -->
+
+    <div class="modal" id="bookingModal">
+
+        <div class="modal-content">
+
+            <button
+                class="close-modal"
+                id="closeModal"
+            >
+                &times;
+            </button>
+
+            <h2>Booking Confirmation</h2>
+
+            <div
+                class="booking-summary"
+                id="bookingSummary"
+            ></div>
+
+            <button
+                class="btn btn-primary"
+                id="confirmBooking"
+            >
+                Xaqiiji Dalabka
+            </button>
+
+            <p
+                class="success-message"
+                id="successMessage"
+            ></p>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+         FOOTER
+    ========================== -->
+
+    <footer>
+
+        <p>
+            &copy; 2026 Safariye Travel & Tours.
+        </p>
+
+        <p>
+            Xuquuqda oo dhan waa dhowran tahay.
+        </p>
+
+    </footer>
+
+
+    <!-- =========================
+         JAVASCRIPT
+    ========================== -->
+
+    <script>
+
+        /* MOBILE MENU */
+
+        const menuBtn = document.getElementById("menuBtn");
+        const nav = document.getElementById("nav");
+
+        menuBtn.addEventListener("click", function () {
+
+            nav.classList.toggle("active");
+
+        });
+
+
+        /* CLOSE MOBILE MENU AFTER CLICK */
+
+        document.querySelectorAll("nav a").forEach(function (link) {
+
+            link.addEventListener("click", function () {
+
+                nav.classList.remove("active");
+
+            });
+
+        });
+
+
+        /* SET MINIMUM DATE TO TODAY */
+
+        const dateInput = document.getElementById("date");
+
+        const today = new Date().toISOString().split("T")[0];
+
+        dateInput.min = today;
+
+
+        /* BOOKING FORM */
+
+        const bookingForm =
+            document.getElementById("bookingForm");
+
+        const bookingModal =
+            document.getElementById("bookingModal");
+
+        const bookingSummary =
+            document.getElementById("bookingSummary");
+
+        const closeModal =
+            document.getElementById("closeModal");
+
+        const confirmBooking =
+            document.getElementById("confirmBooking");
+
+        const successMessage =
+            document.getElementById("successMessage");
+
+
+        let currentBooking = {};
+
+
+        bookingForm.addEventListener("submit", function (event) {
+
+            event.preventDefault();
+
+            const destination =
+                document.getElementById("destination").value;
+
+            const date =
+                document.getElementById("date").value;
+
+            const service =
+                document.getElementById("service").value;
+
+
+            currentBooking = {
+                destination: destination,
+                date: date,
+                service: service
+            };
+
+
+            bookingSummary.innerHTML = `
+
+                <p>
+                    <strong>Goobta:</strong>
+                    ${destination}
+                </p>
+
+                <p>
+                    <strong>Taariikhda:</strong>
+                    ${date}
+                </p>
+
+                <p>
+                    <strong>Adeegga:</strong>
+                    ${service}
+                </p>
+
+            `;
+
+
+            successMessage.textContent = "";
+
+            bookingModal.classList.add("active");
+
+        });
+
+
+        /* PACKAGE BUTTONS */
+
+        document.querySelectorAll(".package-btn")
+            .forEach(function (button) {
+
+                button.addEventListener("click", function () {
+
+                    const destination =
+                        button.dataset.destination;
+
+                    const service =
+                        button.dataset.service;
+
+
+                    if (destination) {
+
+                        document.getElementById(
+                            "destination"
+                        ).value = destination;
+
+                    }
+
+                    if (service) {
+
+                        document.getElementById(
+                            "service"
+                        ).value = service;
+
+                    }
+
+
+                    document.getElementById("booking")
+                        .scrollIntoView({
+                            behavior: "smooth"
+                        });
+
+                });
+
+            });
+
+
+        /* CONFIRM BOOKING */
+
+        confirmBooking.addEventListener(
+            "click",
+            function () {
+
+                successMessage.textContent =
+                    "✅ Dalabkaaga waa la xaqiijiyay! Fadlan nala soo xiriir si loo dhamaystiro booking-ka.";
+
+            }
+        );
+
+
+        /* CLOSE MODAL */
+
+        closeModal.addEventListener(
+            "click",
+            function () {
+
+                bookingModal.classList.remove("active");
+
+            }
+        );
+
+
+        /* CLOSE MODAL WHEN CLICKING OUTSIDE */
+
+        bookingModal.addEventListener(
+            "click",
+            function (event) {
+
+                if (event.target === bookingModal) {
+
+                    bookingModal.classList.remove("active");
+
+                }
+
+            }
+        );
+
+
+        /* CONTACT FORM */
+
+        const contactForm =
+            document.getElementById("contactForm");
+
+        contactForm.addEventListener(
+            "submit",
+            function (event) {
+
+                event.preventDefault();
+
+                alert(
+                    "Mahadsanid! Fariintaada waa la diyaariyay. Waxaan kuu baahan doonaa inaan ku xirno email ama WhatsApp si fariintu dhab ahaan kuu soo gaarto."
+                );
+
+                contactForm.reset();
+
+            }
+        );
+
+    </script>
+
+</body>
+</html>
